@@ -63,4 +63,28 @@ int Matrix::sum_diagonal_major() const {
     }
     return sum;  // Make sure to return the result
 }
+int Matrix::sum_diagonal_minor() const {
+    int sum = 0;
+    std::size_t size = get_size();  // Assuming get_size() returns the dimension of the square matrix.
+    for (std::size_t i = 0; i < size; i++) {
+        sum += data[i][size - i - 1];  // Minor diagonal element
+    }
+    return sum;
+}
+void Matrix::swap_rows(std::size_t r1, std::size_t r2) {
+    if (r1 < get_size() && r2 < get_size()) {
+        std::swap(data[r1], data[r2]);
+    } else {
+        std::cerr << "Invalid row indices." << std::endl;
+    }
+}
+void Matrix::swap_cols(std::size_t c1, std::size_t c2) {
+    if (c1 < get_size() && c2 < get_size()) {
+        for (std::size_t i = 0; i < get_size(); i++) {
+            std::swap(data[i][c1], data[i][c2]);
+        }
+    } else {
+        std::cerr << "Invalid column indices." << std::endl;
+    }
+}
 
