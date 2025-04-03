@@ -57,4 +57,10 @@ int Matrix::get_size() const {
 
 // Calculates the sum of the main diagonal
 int Matrix::sum_diagonal_major() const {
-    int sum
+    int sum = 0;  // Correct initialization of the sum variable
+    for (std::size_t i = 0; i < get_size(); i++) {
+        sum += data[i][i];  // Sum the diagonal elements
+    }
+    return sum;  // Make sure to return the result
+}
+
